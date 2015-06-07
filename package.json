@@ -4,13 +4,20 @@
   "description": "a node module for the genius annotations api",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tap test/*.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/jahrlin/genius-api.git"
   },
-  "author": "",
+  "keywords": [
+    "genius",
+    "api",
+    "annotations",
+    "npm",
+    "javascript"
+  ],
+  "author": "Joakim Ahrlin",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/jahrlin/genius-api/issues"
@@ -18,6 +25,7 @@
   "homepage": "https://github.com/jahrlin/genius-api",
   "devDependencies": {
     "chai": "^3.0.0",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "tap": "^1.2.0"
   }
 }
