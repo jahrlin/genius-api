@@ -4,7 +4,7 @@
   "description": "a node module for the genius annotations api",
   "main": "index.js",
   "scripts": {
-    "test": "tap test/*.js"
+    "test": "tap --reporter=nyan test/*.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,8 @@
     "npm",
     "javascript"
   ],
-  "author": "Joakim Ahrlin",
-  "license": "Apache-2.0",
+  "author": "Joakim Ahrlin <joakim.ahrlin@gmail.com> (https://github.com/jahrlin/)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jahrlin/genius-api/issues"
   },
