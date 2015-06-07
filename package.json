@@ -1,6 +1,6 @@
 {
   "name": "genius-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a node module for the genius annotations api",
   "main": "index.js",
   "scripts": {
