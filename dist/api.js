@@ -14,9 +14,7 @@ var Api = (function () {
   function Api(accessToken, options) {
     _classCallCheck(this, Api);
 
-    if (!accessToken) {
-      throw new Error('Cannot instantiate genius-api without an access token');
-    }
+    if (!accessToken) {}
 
     var defaults = {};
 
@@ -35,9 +33,9 @@ var Api = (function () {
 
       var promise = new Promise(function (resolve, reject) {
         defaultRequest(options, function (err, response) {
-          if (response.statusCode > 399) {
+          if (response.statusCode !== 200) {
             var payload = {
-              'Error': err,
+              'Error': response,
               'Status': response.statusCode
             };
 
@@ -58,6 +56,8 @@ var Api = (function () {
       return new Promise(function (resolve, reject) {
         _this.request(request).then(function (data) {
           resolve(JSON.parse(data).response);
+        })['catch'](function (data) {
+          reject(JSON.parse(data.Error.body));
         });
       });
     }
@@ -137,3 +137,5 @@ var Api = (function () {
 })();
 
 module.exports = Api;
+
+//throw new Error('Cannot instantiate genius-api without an access token');

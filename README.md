@@ -49,6 +49,13 @@ genius.webPage({raw_annotatable_url: 'https://docs.genius.com'}).then(function(r
 return genius.search('Run the Jewels').then(function(response) {
   console.log('hits', response.hits);
 });
+
+//error handling á la promise
+genius.song(378195).then(function(response) {
+  console.log('song', response.song);
+}).catch(function(error) {
+  console.error(error);
+});
 ```
 
 ## tests
