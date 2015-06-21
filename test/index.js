@@ -6,7 +6,7 @@ var api = require('../dist/api.js');
 
 chai.use(chaiAsPromised);
 
-var access_token = 'iyqGdIiA-N9U5EZTbQdX2sHBTTpv_opFoYLVLYQe9rVrShI7QoQabMQ3sQ5B5aP4';
+var access_token = '';
 
 var genius = new api(access_token);
 
