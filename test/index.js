@@ -1,16 +1,11 @@
-var chai = require("chai");
+var chai = require('chai');
 var should = require('chai').should()
-var chaiAsPromised = require("chai-as-promised");
+var chaiAsPromised = require('chai-as-promised');
 var api = require('../dist/api.js');
-// var auth = require('../index.js').Authenticator;
-
 chai.use(chaiAsPromised);
 
-var access_token = process.env.MY_SECRET_ENV;
-
+var access_token = process.env.GENIUS_CLIENT_ACCESS_TOKEN;
 var genius = new api(access_token);
-
-// var myAuth = new auth();
 
 describe('api', function(){
   describe('GET song by ID 378195', function() {
@@ -87,12 +82,3 @@ describe('api', function(){
     });
   });
 });
-
-var authInfo = {
-  client_id: 'L8wlgVYVAan5qAeg5LzZq2KKlIzHMKk7E72SD1vMDQimgyrzQd4nqfqFB5BDFFPW',
-  redirect_uri: 'http://localhost:3000',
-  scope: 'me',
-  state: 'state?',
-  response_type: 'code'
-};
-
