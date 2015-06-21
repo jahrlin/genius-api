@@ -4,12 +4,12 @@ node.js client for the [Genius API](https://docs.genius.com)
 
 uses [ES6 promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to avoid callback hell.
 
-##installation
+## installation
 ```bash
 $ npm install genius-api --save
 ```
 
-##usage
+## usage
 more information about the different options can be found in the [Genius API docs](https://docs.genius.com/)
 ```js
 var api = require('genius-api');
@@ -51,7 +51,7 @@ return genius.search('Run the Jewels').then(function(response) {
 });
 ```
 
-##tests
+## tests
 ```bash
 $ git clone https://github.com/jahrlin/genius-api.git
 $ cd genius-api
