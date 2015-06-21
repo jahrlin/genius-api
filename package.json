@@ -4,7 +4,7 @@
   "description": "a node module for the genius annotations api",
   "main": "dist/api.js",
   "scripts": {
-    "test": "tap --reporter=nyan test/*.js"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
