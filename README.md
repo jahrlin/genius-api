@@ -46,7 +46,7 @@ genius.webPage({raw_annotatable_url: 'https://docs.genius.com'}).then(function(r
 });
 
 //search
-return genius.search('Run the Jewels').then(function(response) {
+genius.search('Run the Jewels').then(function(response) {
   console.log('hits', response.hits);
 });
 
