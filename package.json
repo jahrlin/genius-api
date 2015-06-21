@@ -29,15 +29,11 @@
     "chai-as-promised": "^5.1.0",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
-    "gulp-flowtype": "^0.4.7",
     "gulp-rename": "^1.2.2",
     "lodash": "^3.9.3",
     "mocha": "^2.2.5",
-    "superagent": "^1.2.0",
-    "tap": "^1.2.0"
   },
   "dependencies": {
-    "beefy": "^2.1.5",
     "request": "^2.58.0"
   }
 }

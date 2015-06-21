@@ -1,6 +1,5 @@
 var request = require('request');
 var _ = require('lodash');
-var Song = require('./song.js');
 
 var BASE_URL = 'https://api.genius.com/';
 var AUTH_URL = 'https://api.genius.com/oauth/authorize';
@@ -16,10 +15,6 @@ class Api {
     this.options = options || defaults;
     this.at = accessToken;
     this.AuthHeader = {'Authentication': 'Bearer ' + this.at};
-
-    // var a = new Authenticator({
-    //   client_id: 1
-    // });
   }
 
   request(options, callback) {
