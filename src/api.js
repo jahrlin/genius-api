@@ -1,10 +1,9 @@
-'use strict';
+var request = require('request');
+var _ = require('lodash');
+var Song = require('./song.js');
 
-import _ from 'lodash';
-import request from 'superagent';
-
-const BASE_URL = 'https://api.genius.com/';
-const AUTH_URL = 'https://api.genius.com/oauth/authorize';
+var BASE_URL = 'https://api.genius.com/';
+var AUTH_URL = 'https://api.genius.com/oauth/authorize';
 
 class Api {
   constructor(accessToken, options) {
@@ -12,89 +11,113 @@ class Api {
       throw new Error('Cannot instantiate genius-api without an access token');
     }
 
-    let defaults = {
-
-    };
+    var defaults = {};
 
     this.options = options || defaults;
+    this.at = accessToken;
+    this.AuthHeader = {'Authentication': 'Bearer ' + this.at};
 
-    let a = new Authenticator({
-      client_id: 1
-    });
+    // var a = new Authenticator({
+    //   client_id: 1
+    // });
   }
 
-  songs(id) {
-    var promise = new Promise(function(resolve, reject) {
-      request.get(BASE_URL + 'songs/' + id)
-      .end(function(err, res) {
-        if (err) {
-          reject(err);
+  request(options, callback) {
+    var defaultRequest = request.defaults({
+      baseUrl: BASE_URL,
+      headers: {'Authorization': 'Bearer ' + this.at}
+    });
+
+    let promise = new Promise(function(resolve, reject) {
+      defaultRequest(options, function(err, response) {
+        if (response.statusCode > 399) {
+          var payload = {
+            'Error': err,
+            'Status': response.statusCode
+          };
+
+          reject(payload);
         }
 
-        resolve(res);
-      })
+        resolve(response.body);
+      });
     });
 
     return promise;
   }
-}
 
-const privateData = new WeakMap();
+  requestPromise(request) {
+    let _this = this;
 
-class Authenticator {
-  constructor() {
-    privateData.set(this, {
-      doAuth: function(authInfo) {
-        var promise = new Promise(function(resolve, reject) {
-          request.get(AUTH_URL)
-          .query({
-            client_id: authInfo.client_id,
-            redirect_uri: authInfo.redirect_uri,
-            scope: authInfo.scope,
-            state: authInfo.state,
-            response_type: authInfo.response_type
-          })
-          .end(function(err, res) {
-            if (err) {
-              reject(err);
-            }
-
-            resolve(res);
-          });
-        });
-
-        return promise;
-      }
-    })
+    return new Promise(function(resolve, reject) {
+      _this.request(request).then(function(data) {
+        resolve(JSON.parse(data).response);
+      });
+    });
   }
 
-  auth(authInfo) {
-    if (!authInfo) {
-      throw new Error('authInfo is null');
+  annotation(id, options) {
+    let request = {
+      url: 'annotations/' + id,
+      qs: options
+    };
+
+    return this.requestPromise(request);
+  }
+
+  referents(id, options) {
+    let request = {
+      url: 'referents',
+      qs: _.merge(id, options)
     }
 
-    if (!_.has(authInfo, 'client_id')) {
-      throw new Error('missing client_id')
+    return this.requestPromise(request);
+  }
+
+  song(id, options) {
+    let request = {
+      url: 'songs/' + id,
+      qs: options
+    };
+
+    return this.requestPromise(request);
+  }
+
+  artist(id, options) {
+    let request = {
+      url: 'artists/' + id,
+      qs: options
+    };
+
+    return this.requestPromise(request);
+  }
+
+  songsByArtist(id, options) {
+    let request = {
+      url: 'artists/' + id + '/songs',
+      qs: options
+    };
+
+    return this.requestPromise(request);
+  }
+
+  webPage(options) {
+    let request = {
+      url: 'web_pages/lookup',
+      qs: options
+    };
+
+    return this.requestPromise(request);
+  }
+
+  search(query) {
+    let request = {
+      url: 'search',
+      qs: {'q': query}
     }
 
-    if (!_.has(authInfo, 'redirect_uri')) {
-      throw new Error('missing redirect_uri')
-    }
-
-    if (!_.has(authInfo, 'scope')) {
-      throw new Error('missing scope')
-    }
-
-    if (!_.has(authInfo, 'state')) {
-      throw new Error('missing state')
-    }
-
-    if (!_.has(authInfo, 'response_type')) {
-      authInfo.response_type = 'code';
-    }
-
-    return privateData.get(this).doAuth(authInfo);
+    return this.requestPromise(request);
   }
 }
 
-export { Api, Authenticator }
+module.exports = Api;

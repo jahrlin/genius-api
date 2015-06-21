@@ -2,7 +2,7 @@
   "name": "genius-api",
   "version": "0.0.2",
   "description": "a node module for the genius annotations api",
-  "main": "index.js",
+  "main": "dist/api.js",
   "scripts": {
     "test": "tap --reporter=nyan test/*.js"
   },
@@ -26,6 +26,7 @@
   "devDependencies": {
     "babel": "^5.5.4",
     "chai": "^3.0.0",
+    "chai-as-promised": "^5.1.0",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
     "gulp-flowtype": "^0.4.7",
@@ -34,5 +35,9 @@
     "mocha": "^2.2.5",
     "superagent": "^1.2.0",
     "tap": "^1.2.0"
+  },
+  "dependencies": {
+    "beefy": "^2.1.5",
+    "request": "^2.58.0"
   }
 }

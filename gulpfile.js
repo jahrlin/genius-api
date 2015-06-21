@@ -3,8 +3,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename');
 
 gulp.task('default', function () {
-  return gulp.src('src/api.js')
+  return gulp.src('src/*.js')
     .pipe(babel())
-    .pipe(rename('index.js'))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./dist'));
 });
