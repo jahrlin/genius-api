@@ -6,7 +6,7 @@ var api = require('../dist/api.js');
 
 chai.use(chaiAsPromised);
 
-var access_token = '';
+var access_token = process.env.MY_SECRET_ENV;
 
 var genius = new api(access_token);
 
