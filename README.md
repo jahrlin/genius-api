@@ -1,5 +1,7 @@
 # genius-api [![Build Status](https://travis-ci.org/jahrlin/genius-api.svg?branch=master)](https://travis-ci.org/jahrlin/genius-api) [![npm version](https://badge.fury.io/js/genius-api.svg)](http://badge.fury.io/js/genius-api)
 
+by Joakim Ahrlin
+
 node.js client for the [Genius API](https://docs.genius.com)
 
 uses [ES6 promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to avoid callback hell.
