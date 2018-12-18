@@ -24,16 +24,17 @@
   },
   "homepage": "https://github.com/jahrlin/genius-api",
   "devDependencies": {
-    "babel": "^5.5.4",
+    "babel-cli": "^6.26.0",
     "chai": "^3.0.0",
     "chai-as-promised": "^5.1.0",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^5.1.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
     "gulp-rename": "^1.2.2",
-    "mocha": "^2.2.5"
+    "mocha": "^5.2.0"
   },
   "dependencies": {
-    "lodash": "^3.9.3",
+    "lodash": "^4.17.11",
     "request": "^2.58.0"
   }
 }
+ 
