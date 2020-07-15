@@ -33,7 +33,7 @@
     "mocha": "^2.2.5"
   },
   "dependencies": {
-    "lodash": "^3.9.3",
+    "lodash": "^4.17.19",
     "request": "^2.58.0"
   }
 }
